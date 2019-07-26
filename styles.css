@@ -1,0 +1,11 @@
+body {
+  margin: 0;
+  overflow: hidden;
+}
+img {
+  display: none;
+}
+
+.nav {
+    height: 50px;
+}
