@@ -1,10 +1,8 @@
-document.addEventListener('keydown', function(e) {
-  console.log('Hi')
+document.addEventListener("keydown", function(e) {
   if (e.keyCode == 32) {
-    document.getElementById('audio').play();
+    document.getElementById("audio").play();
   }
 });
-
 
 function restart(timer) {
   clearInterval(timer);
@@ -30,8 +28,8 @@ function setupGame() {
   }, 2500);
 
   const timeRef = setInterval(() => {
-    timer += 1
-  }, 1000)
+    timer += 1;
+  }, 1000);
 
   gameLoop();
   function gameLoop() {
@@ -50,10 +48,10 @@ function setupGame() {
 
     bird.render();
 
-    prompt.render(timer)
+    prompt.render(timer);
 
     if (bird.dead) {
-      clearInterval(timeRef)
+      clearInterval(timeRef);
       drawGameOver(ctx, c);
     }
     window.requestAnimationFrame(gameLoop);
@@ -82,4 +80,3 @@ function drawGameOver(ctx, c) {
 }
 
 window.onload = setupGame;
-
