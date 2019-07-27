@@ -64,7 +64,3 @@ function drawGameOver(ctx, c) {
 
 window.onload = setupGame;
 
-
-function onStartGame() {
-  setupGame()
-}
