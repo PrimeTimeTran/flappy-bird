@@ -4,7 +4,7 @@ const Pipe = function(xpos, ypos, length, speed, ctx){
   this.length = length;
   this.ctx = ctx;
   this.speed = speed;
-  this.width = 150 ;
+  this.width = 100;
 };
 
 Pipe.prototype.update = function(){

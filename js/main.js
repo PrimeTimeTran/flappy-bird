@@ -1,9 +1,18 @@
+document.addEventListener('keydown', function(e) {
+  console.log('Hi')
+  if (e.keyCode == 32) {
+    document.getElementById('audio').play();
+  }
+});
+
+
 function restart(timer) {
   clearInterval(timer);
   setupGame();
 }
 
 function setupGame() {
+  let timer = 0;
   const c = document.getElementById("canvas");
   c.width = window.innerWidth;
   c.height = window.innerHeight;
@@ -11,6 +20,7 @@ function setupGame() {
 
   const environment = new Environment(c, ctx);
   const bird = new Bird(250, 300, ctx);
+  const prompt = new Prompt(c, ctx);
   const pipes = [];
   let pipeSet = generateRandomPipes(ctx, c.width, c.height);
   pipes.push(pipeSet.top, pipeSet.bottom);
@@ -18,6 +28,10 @@ function setupGame() {
     let pipeSet = generateRandomPipes(ctx, c.width, c.height);
     pipes.push(pipeSet.top, pipeSet.bottom);
   }, 2500);
+
+  const timeRef = setInterval(() => {
+    timer += 1
+  }, 1000)
 
   gameLoop();
   function gameLoop() {
@@ -33,8 +47,13 @@ function setupGame() {
     pipes.forEach(function(pipe1) {
       pipe1.render();
     });
+
     bird.render();
+
+    prompt.render(timer)
+
     if (bird.dead) {
+      clearInterval(timeRef)
       drawGameOver(ctx, c);
     }
     window.requestAnimationFrame(gameLoop);
